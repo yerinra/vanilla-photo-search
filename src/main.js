@@ -1,11 +1,6 @@
-import add from "@/add";
+/* eslint-disable no-new */
+import App from './App.js';
 
-function component() {
-  const element = document.createElement("div");
-
-  element.innerHTML = add(1, 1);
-
-  return element;
-}
-
-document.body.appendChild(component());
+document.addEventListener('DOMContentLoaded', () => {
+  new App(document.querySelector('.App'));
+});
