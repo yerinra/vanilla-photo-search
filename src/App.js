@@ -6,10 +6,9 @@ import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
 
 export default function App($target) {
-  this.$darkModeBtn = new DarkModeBtn($target);
+  this.$darkModeBtn = new DarkModeBtn({ $target });
   this.$loading = new Loading($target);
   this.data = [];
-
   this.searchInput = new SearchInput({
     $target,
     onSearch: async (keyword) => {

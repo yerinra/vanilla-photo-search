@@ -1,0 +1,16 @@
+:root[data-theme='dark'] {
+  --background-color: rgb(68 64 60);
+  --card-color: rgb(28 25 23);
+  --text-color: rgb(245 245 244);
+}
+
+:root[data-theme='light'] {
+  --background-color: rgb(255 237 213);
+  --card-color: #fff;
+  --text-color: rgb(68 64 60);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
