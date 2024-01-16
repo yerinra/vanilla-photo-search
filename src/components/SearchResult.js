@@ -19,7 +19,7 @@ export default function SearchResult({ $target, initialData, onClick }) {
     this.$searchResult.innerHTML = this.data
       .map(
         ({ alt_description, urls, id }) => `
-            <div class="item" title=${alt_description}>
+            <div class="item" title=${id}>
               <img src=${urls.small} alt=${alt_description} id=${id} />
             </div>
           `,
