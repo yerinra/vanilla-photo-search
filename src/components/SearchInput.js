@@ -24,7 +24,7 @@ export default function SearchInput({ $target, onSearch, onRandom }) {
     onRandom();
   });
 
-  this.$input.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     this.$input.focus();
   });
 
@@ -39,7 +39,6 @@ export default function SearchInput({ $target, onSearch, onRandom }) {
       if (this.keywords.length > 5) {
         this.keywords.shift();
       }
-      console.log(this.keywords);
       this.render();
     }
   });
