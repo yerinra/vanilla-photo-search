@@ -1,12 +1,14 @@
 import api from './api.js';
 import DarkModeBtn from './components/DarkModeBtn.js';
+import Header from './components/Header.js';
 import Image from './components/Image.js';
 import Loading from './components/Loading.js';
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
 
 export default function App($target) {
-  this.$darkModeBtn = new DarkModeBtn({ $target });
+  this.$header = new Header($target);
+  this.$darkModeBtn = new DarkModeBtn($target);
   this.$loading = new Loading($target);
   this.data = [];
   this.searchInput = new SearchInput({

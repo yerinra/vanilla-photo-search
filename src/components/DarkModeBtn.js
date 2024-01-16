@@ -1,4 +1,4 @@
-export default function DarkModeBtn({ $target }) {
+export default function DarkModeBtn($target) {
   this.$btn = document.createElement('button');
   $target.append(this.$btn);
   this.$btn.innerHTML = 'DarkMode';
