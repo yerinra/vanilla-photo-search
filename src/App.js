@@ -1,33 +1,33 @@
 import api from './api.js';
-import DarkModeBtn from './components/DarkModeBtn.js';
+// import DarkModeBtn from './components/DarkModeBtn.js';
 import Header from './components/Header.js';
-import Image from './components/Image.js';
+import ImageInfo from './components/ImageInfo.js';
 import Loading from './components/Loading.js';
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
 
 export default function App($target) {
   this.$header = new Header($target);
-  this.$darkModeBtn = new DarkModeBtn($target);
+  // this.$darkModeBtn = new DarkModeBtn($target);
   this.$loading = new Loading($target);
   this.data = [];
   this.searchInput = new SearchInput({
     $target,
     onSearch: async (keyword) => {
       let res = null;
-      // this.loading.startLoading();
+      this.$loading.startLoading();
       res = await api.fetchKeyword(keyword);
       if (res != null) {
-        // this.loading.finishLoading();
+        this.$loading.endLoading();
         this.setState(res.results);
       }
     },
     onRandom: async () => {
       let res = null;
-      // this.loading.startLoading();
+      this.$loading.startLoading();
       res = await api.fetchRandom();
       if (res != null) {
-        // this.loading.finishLoading();
+        this.$loading.endLoading();
         this.setState([res]);
       }
     },
@@ -38,19 +38,20 @@ export default function App($target) {
     initialData: this.data,
     onClick: async (photoId) => {
       let res = null;
-      // this.loading.startLoading();
+      this.$loading.startLoading();
       res = await api.fetchSingle(photoId);
       if (res != null) {
-        // this.loading.finishLoading();
+        this.$loading.endLoading();
         this.imageInfo.setState({
           visible: true,
           image: res,
         });
+        console.log(res);
       }
     },
   });
 
-  this.imageInfo = new Image({
+  this.imageInfo = new ImageInfo({
     $target,
     data: {
       visible: false,

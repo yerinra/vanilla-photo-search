@@ -2,8 +2,6 @@ export default function DarkModeBtn({ $target }) {
   this.$btn = document.createElement('button');
   $target.appendChild(this.$btn);
 
-  this.$btn.innerHTML = 'Theme Change';
-
   const savedTheme = localStorage.getItem('theme');
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -12,10 +10,10 @@ export default function DarkModeBtn({ $target }) {
         'data-theme',
         savedTheme === 'dark' ? 'dark' : 'light',
       );
-      this.$btn.innerHTML = savedTheme === 'dark' ? 'light' : 'dark';
+      this.$btn.innerText = savedTheme === 'dark' ? 'light' : 'dark';
     } else {
       document.documentElement.setAttribute('data-theme', 'light');
-      this.$btn.innerHTML = 'dark';
+      this.$btn.innerText = 'dark';
     }
   });
 
@@ -27,6 +25,6 @@ export default function DarkModeBtn({ $target }) {
       'data-theme',
       currentTheme === 'dark' ? 'light' : 'dark',
     );
-    this.$btn.innerHTML = currentTheme === 'dark' ? 'dark' : 'light';
+    this.$btn.innerText = currentTheme === 'dark' ? 'dark' : 'light';
   });
 }

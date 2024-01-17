@@ -1,19 +1,23 @@
+import DarkModeBtn from './DarkModeBtn.js';
+
 export default function SearchInput({ $target, onSearch, onRandom }) {
   this.$container = document.createElement('div');
   this.$container.className = 'searchInputContainer';
   $target.appendChild(this.$container);
 
+  this.darkModeBtn = new DarkModeBtn({ $target: this.$container });
   this.$input = document.createElement('input');
   this.$input.className = 'searchInput';
   this.$input.placeholder = '키워드를 검색해서 사진을 찾아보세요.';
 
   this.$randomBtn = document.createElement('button');
-  this.$randomBtn.innerText = 'Random photos';
+  this.$randomBtn.innerText = 'Random photo';
   this.$randomBtn.className = 'randomBtn';
   this.$container.appendChild(this.$randomBtn);
 
   this.$keywords = document.createElement('div');
   this.$keywords.className = 'keywords';
+
   $target.appendChild(this.$keywords);
 
   this.$container.appendChild(this.$input);
