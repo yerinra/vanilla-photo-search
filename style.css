@@ -1,13 +1,13 @@
 :root[data-theme='dark'] {
-  --background-color: rgb(68 64 60);
-  --card-color: rgb(28 25 23);
+  --background-color: #434343;
+  --accent-color: #ff3d57;
   --text-color: rgb(245 245 244);
 }
 
 :root[data-theme='light'] {
-  --background-color: rgb(255 237 213);
-  --card-color: #fff;
-  --text-color: rgb(68 64 60);
+  --background-color: rgb(245 245 244);
+  --accent-color: #ff3d57;
+  --text-color: #434343;
 }
 
 html {
@@ -30,6 +30,10 @@ body {
   margin: 1.5em auto;
   max-width: 90%;
   column-gap: 1.5em;
+}
+
+.header {
+  color: var(--accent-color);
 }
 
 .SearchResult {
@@ -104,4 +108,16 @@ body {
   .ImageInfo .content-wrapper {
     width: 100%;
   }
+}
+
+.loading {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 0.2rem 0.5rem;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
 }
