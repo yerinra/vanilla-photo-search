@@ -1,4 +1,4 @@
-export default function ImageInfo({ $target, data }) {
+export default function ImageInfo({ $target, onExit }) {
   this.$modal = document.createElement('section');
   this.$modal.className = 'ImageInfo';
   $target.appendChild(this.$modal);
@@ -9,8 +9,6 @@ export default function ImageInfo({ $target, data }) {
   };
 
   this.render = () => {
-    // console.log('hi');
-    // console.log(this.data);
     if (this.data.visible) {
       const { alt_description, id, urls, tags_preview } = this.data.image;
 
@@ -36,13 +34,14 @@ export default function ImageInfo({ $target, data }) {
       const $wrapper = e.target.closest('.content-wrapper');
 
       if ($wrapper && !$btn) return;
-      if ($imageInfo) this.$modal.style.display = 'none';
+      // if ($imageInfo) {
+      onExit();
+      // }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        // this.$imageInfo.classList.add('fadeout');
-        this.$modal.style.display = 'none';
+        onExit();
       }
     });
   };
