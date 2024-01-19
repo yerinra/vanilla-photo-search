@@ -8,6 +8,7 @@ export default function ErrorMessage({ $target, initialState }) {
   this.setState = (nextState) => {
     this.state = nextState;
     this.render();
+    // console.log('error message');
   };
 
   this.render = () => {
