@@ -1,4 +1,5 @@
 import DarkModeBtn from './DarkModeBtn.js';
+import RandomBtn from './RandomBtn.js';
 
 export default function SearchInput({ $target, onSearch, onRandom }) {
   this.$container = document.createElement('div');
@@ -9,11 +10,7 @@ export default function SearchInput({ $target, onSearch, onRandom }) {
   this.$input = document.createElement('input');
   this.$input.className = 'searchInput';
   this.$input.placeholder = '키워드를 검색해서 사진을 찾아보세요.';
-
-  this.$randomBtn = document.createElement('button');
-  this.$randomBtn.innerText = 'Random photo';
-  this.$randomBtn.className = 'randomBtn';
-  this.$container.appendChild(this.$randomBtn);
+  this.randomBtn = new RandomBtn({ $target: this.$container, onRandom });
 
   this.$keywords = document.createElement('div');
   this.$keywords.className = 'keywords';
@@ -24,9 +21,9 @@ export default function SearchInput({ $target, onSearch, onRandom }) {
 
   this.keywords = [];
 
-  this.$randomBtn.addEventListener('click', () => {
-    onRandom();
-  });
+  // this.$randomBtn.addEventListener('click', () => {
+  //   onRandom();
+  // });
 
   window.addEventListener('DOMContentLoaded', () => {
     this.$input.focus();
