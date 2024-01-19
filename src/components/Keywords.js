@@ -7,6 +7,7 @@ export default function Keywords({ $target, initialState, onClick }) {
   this.setState = (nextState) => {
     this.state = nextState;
     this.render();
+    // console.log('keywords');
   };
 
   this.render = () => {
@@ -30,8 +31,8 @@ export default function Keywords({ $target, initialState, onClick }) {
 
     onClick(keyword);
   });
-  const keywordHistory = JSON.parse(localStorage.getItem('keyword'));
-  if (keywordHistory) {
-    this.setState(keywordHistory);
-  }
+  // const keywordHistory = JSON.parse(localStorage.getItem('keywordHistory'));
+  // if (keywordHistory) {
+  //   this.setState(keywordHistory);
+  // }
 }
