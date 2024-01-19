@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+
 :root[data-theme='dark'] {
   --background-color: #434343;
   --accent-color: #ff3d57;
@@ -15,7 +17,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Work Sans', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -24,6 +26,16 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+button {
+  font-family: 'Work Sans', sans-serif;
+  border: none;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
 }
 
 .App {
@@ -71,13 +83,34 @@ body {
   background-color: #eee;
   display: inline-block;
   width: 100%;
+  cursor: pointer;
 }
 
-/* .searchInputContainer {
+.searchInputContainer {
   width: 100%;
   font-size: 40px;
-  padding: 10px 15px;
-} */
+  display: flex;
+  gap: 0.5rem;
+}
+
+.searchInput {
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--background-color);
+  font-family: 'Work Sans', sans-serif;
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.keyword {
+  margin: 1.3rem 0.1rem 0.7rem 0rem;
+  cursor: pointer;
+  background-color: var(--background-color);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
 
 .ImageInfo {
   display: none;
@@ -93,11 +126,11 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 1rem;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 5px;
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0.7rem;
 }
 
 .ImageInfo .content-wrapper img {
@@ -115,9 +148,10 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 0.2rem 0.5rem;
+  padding: 2rem 5rem;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 1px solid #eee;
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
+  color: var(--accent-color);
 }
