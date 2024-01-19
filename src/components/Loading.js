@@ -1,5 +1,5 @@
 export default function Loading({ $target, initialState }) {
-  this.$loading = document.createElement('div');
+  this.$loading = document.createElement('section');
   this.$loading.className = 'loading';
 
   $target.appendChild(this.$loading);
@@ -8,6 +8,7 @@ export default function Loading({ $target, initialState }) {
   this.setState = (nextState) => {
     this.state = nextState;
     this.render();
+    // console.log('loading');
   };
 
   this.render = () => {

@@ -2,7 +2,7 @@ import DarkModeBtn from './DarkModeBtn.js';
 import RandomBtn from './RandomBtn.js';
 
 export default function SearchInput({ $target, onSearch, onRandom }) {
-  this.$container = document.createElement('div');
+  this.$container = document.createElement('section');
   this.$container.className = 'searchInputContainer';
   $target.appendChild(this.$container);
 
