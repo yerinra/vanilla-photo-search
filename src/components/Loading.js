@@ -1,13 +1,17 @@
-export default function Loading($target) {
+export default function Loading({ $target, initialState }) {
   this.$loading = document.createElement('div');
   this.$loading.className = 'loading';
-  this.$loading.innerHTML = '<div>Loading...</div>';
+
   $target.appendChild(this.$loading);
 
-  this.startLoading = () => {
-    this.$loading.style.display = 'block';
+  this.state = initialState;
+  this.setState = (nextState) => {
+    this.state = nextState;
+    this.render();
   };
-  this.endLoading = () => {
-    this.$loading.style.display = 'none';
+
+  this.render = () => {
+    this.$loading.innerHTML = '<div>Loading...</div>';
+    this.$loading.style.display = this.state ? 'block' : 'none';
   };
 }
