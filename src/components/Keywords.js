@@ -10,7 +10,6 @@ export default function Keywords({ $target, initialState, onClick }) {
   };
 
   this.render = () => {
-    console.log('keyword', this.state);
     this.$section.innerHTML = this.state
       .map(
         (keyword) => `
@@ -31,4 +30,8 @@ export default function Keywords({ $target, initialState, onClick }) {
 
     onClick(keyword);
   });
+  const keywordHistory = JSON.parse(localStorage.getItem('keyword'));
+  if (keywordHistory) {
+    this.setState(keywordHistory);
+  }
 }

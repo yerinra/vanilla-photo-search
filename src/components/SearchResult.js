@@ -23,8 +23,8 @@ export default function SearchResult({ $target, initialData, onClick }) {
   };
 
   this.init = () => {
-    const $LastResultData = JSON.parse(localStorage.getItem('data'));
-    if ($LastResultData) this.setState($LastResultData);
+    const LastResultData = JSON.parse(localStorage.getItem('data'));
+    if (LastResultData) this.setState(LastResultData);
     this.$searchResult.addEventListener('click', (e) => {
       const $target = e.target.closest('.item');
       if (!$target) return;

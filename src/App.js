@@ -28,7 +28,7 @@ export default function App($target) {
       console.log(res.results);
 
       if (res.results == null || res.results.length === 0) {
-        this.setState({ ...this.state, error: true, loading: false });
+        this.setState({ ...this.state, error: true, data: [], loading: false });
       } else {
         let nextKeyword = [
           ...this.state.keywords.filter((word) => word !== keyword),
@@ -36,11 +36,13 @@ export default function App($target) {
         ];
 
         if (nextKeyword.length > 5) {
-          nextKeyword = nextKeyword.slice(0, 5);
+          nextKeyword = nextKeyword.slice(-5);
         }
+        console.log(nextKeyword);
         this.setState({
           ...this.state,
           image: null,
+          error: false,
           loading: false,
           data: res.results,
           keywords: nextKeyword,
@@ -80,6 +82,7 @@ export default function App($target) {
         ...this.state,
         data: data.results,
         loading: false,
+        error: false,
         keywords: nextKeyword,
       });
     },
@@ -117,6 +120,7 @@ export default function App($target) {
     this.state = nextState;
     this.searchResult.setState(this.state.data);
     localStorage.setItem('data', JSON.stringify(nextState.data));
+    localStorage.setItem('keyword', JSON.stringify(nextState.keywords));
     this.imageInfo.setState({
       image: this.state.image,
       visible: this.state.visible,
