@@ -49,19 +49,18 @@ export default function ImageInfo({ $target, onExit }) {
 
     this.$modal.addEventListener('click', (e) => {
       const $btn = e.target.closest('.close');
-      // const $imageInfo = e.target.closest('.ImageInfo');
+      const $imageInfo = e.target.closest('.ImageInfo');
       const $wrapper = e.target.closest('.content-wrapper');
-
       if ($wrapper && !$btn) return;
 
-      // onExit();
       this.fadeInOut();
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         this.fadeInOut();
-        // onExit();
+        // console.log('esc');
+        onExit();
       }
     });
   };
