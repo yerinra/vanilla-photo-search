@@ -18,19 +18,20 @@ export default function App($target) {
   this.$header = new Header($target);
 
   this.state = {
-    loading: false,
+    // loading: false,
     error: false,
     visible: false,
     image: null,
     data: [],
     keywords: [],
-    loadMore: false,
+    // loadMore: false,
   };
-
+  this.loading = new Loading({ $target });
   this.searchInput = new SearchInput({
     $target,
     onSearch: async (keyword) => {
-      this.setState({ ...this.state, loading: true });
+      // this.setState({ ...this.state, loading: true });
+      this.loading.loadingStart();
 
       try {
         const res = await api.fetchKeyword(keyword);
@@ -39,8 +40,8 @@ export default function App($target) {
             ...this.state,
             error: true,
             data: [],
-            loading: false,
           });
+          this.loading.loadingEnd();
         } else {
           let nextKeyword = [
             ...this.state.keywords.filter((word) => word !== keyword),
@@ -53,11 +54,12 @@ export default function App($target) {
           this.setState({
             ...this.state,
             image: null,
-            error: false,
-            loading: false,
+            // error: false,
+            // loading: false,
             data: res.results,
             keywords: nextKeyword,
           });
+          this.loading.loadingEnd();
           setKeywordHistory(nextKeyword);
           setLocalStorage(res.results);
         }
@@ -70,27 +72,31 @@ export default function App($target) {
       }
     },
     onRandom: async () => {
-      this.setState({ ...this.state, loading: true });
+      // this.setState({ ...this.state, loading: true });
+      this.loading.loadingStart();
       const res = await api.fetchRandom();
       if (res != null) {
         this.setState({
           ...this.state,
-          loading: false,
+          // loading: false,
           data: [res],
         });
+
+        this.loading.loadingEnd();
         setLocalStorage([res]);
       }
     },
   });
 
-  this.loading = new Loading({ $target, initialState: this.state.loading });
+  // this.loading = new Loading({ $target, initialState: this.state.loading });
   this.error = new ErrorMessage({ $target, initialState: this.state.error });
 
   this.keywords = new Keywords({
     $target,
     initialState: this.state.keywords,
     onClick: async (keyword) => {
-      this.setState({ ...this.state, loading: true });
+      // this.setState({ ...this.state, loading: true });
+      this.loading.loadingStart();
       const data = await api.fetchKeyword(keyword);
 
       const nextKeyword = [
@@ -101,11 +107,10 @@ export default function App($target) {
       this.setState({
         ...this.state,
         data: data.results,
-        loading: false,
-
-        error: false,
+        // loading: false,
         keywords: nextKeyword,
       });
+      this.loading.loadingEnd();
       setLocalStorage(data.results);
       setKeywordHistory(nextKeyword);
     },
@@ -115,15 +120,17 @@ export default function App($target) {
     $target,
     initialData: this.data,
     onClick: async (photoId) => {
-      this.setState({ ...this.state, loading: true });
+      // this.setState({ ...this.state, loading: true });
+      this.loading.loadingStart();
       const res = await api.fetchSingle(photoId);
       if (res != null) {
         this.setState({
           ...this.state,
-          loading: false,
+          // loading: false,
           visible: true,
           image: res,
         });
+        this.loading.loadingEnd();
       }
     },
   });
@@ -146,7 +153,7 @@ export default function App($target) {
       image: this.state.image,
       visible: this.state.visible,
     });
-    this.loading.setState(this.state.loading);
+    // this.loading.setState(this.state.loading);
     this.error.setState(this.state.error);
     this.keywords.setState(this.state.keywords);
   };
